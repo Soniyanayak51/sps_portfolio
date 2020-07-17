@@ -28,7 +28,20 @@ function addRandomFact() {
 }
 
 function getJsonComments() {
-    fetch('/data').then(response => response.json()).then((myDetails) => {
-    document.getElementById('my-details-container').innerText = myDetails;
-  });
+    fetch('/data').then(response => response.json()).then((comments) => {
+        const commentListElement = document.getElementById('my-details-container');
+        comments.forEach((comment) => {
+        commentListElement.appendChild(createTaskElement(comment));
+        })
+    });
 }
+
+function createTaskElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.className = 'comment';
+  const titleElement = document.createElement('span');
+  titleElement.innerText = comment.title;
+  commentElement.appendChild(titleElement);
+  return commentElement;
+}
+

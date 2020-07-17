@@ -17,12 +17,17 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.sps.data.Task;
 import java.io.IOException;
 import com.google.gson.reflect.TypeToken; 
 import java.lang.reflect.Type; 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import com.google.gson.Gson;
+import java.util.List;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,10 +36,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   
-  ArrayList<String> detailsAboutMe = new ArrayList<String>();
+  List<Task> comments = new ArrayList<>();
 
-  @Override
+
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      long id = entity.getKey().getId();
+      String title = (String) entity.getProperty("title");
+      long timestamp = (long) entity.getProperty("timestamp");
+
+      Task comment = new Task(id, title, timestamp);
+      comments.add(comment);
+    }
 
     String json = convertToJsonUsingGson();
     response.setContentType("application/json;");
@@ -44,7 +62,6 @@ public class DataServlet extends HttpServlet {
    @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String commentByUser = request.getParameter("comment");
-    detailsAboutMe.add(commentByUser);
 
     long timestamp = System.currentTimeMillis();
     Entity commentEntity = new Entity("Task");
@@ -58,9 +75,8 @@ public class DataServlet extends HttpServlet {
   }
 
   private String convertToJsonUsingGson() {
-    Type listType = new TypeToken<ArrayList<String>>() {}.getType();
     Gson gson = new Gson();
-    String json = gson.toJson(detailsAboutMe, listType);
+    String json = gson.toJson(comments);
     return json;
   }
 }
