@@ -1,9 +1,92 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  width: 850px;
 }
 
 #greeting-container {
   margin-top: 20px;
 }
+
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: rgb(100, 172, 86);
+  color: #040802;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+a:hover{
+ border:1px solid red;  
+}
+
+li {
+  display: inline;
+}
+
+ul {
+    list-style-type: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+  font-family: Arial;
+}
+
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+html { 
+  background: url(imagesForPortfolio/back.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
