@@ -33,14 +33,19 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    detailsAboutMe.add("Soniya Nayak");
-    detailsAboutMe.add("Female");
-    detailsAboutMe.add("Indian");
-
     String json = convertToJsonUsingGson();
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
+
+   @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String commentByUser = request.getParameter("comment");
+    detailsAboutMe.add(commentByUser);
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+  }
+
   private String convertToJsonUsingGson() {
     Type listType = new TypeToken<ArrayList<String>>() {}.getType();
     Gson gson = new Gson();
