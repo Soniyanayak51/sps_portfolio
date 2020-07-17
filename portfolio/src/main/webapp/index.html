@@ -2,17 +2,51 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Google SPS</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+      <h1>Soniya Nayak</h1>
+      <img src = "/imagesForPortfolio/me.jpeg" width="200" height="300"/>
+      <p>Hi! I am Soniya, a CSE final year at IIT (ISM) Dhanbad. I am interested in Software Development, NLP, ans Machine Learning. I am passionate about leaning new technologies. I also like to sketch in my free time!</p>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/soniyanayak51/" class="button">LinkedIn</a></li>
+        <li><a href="https://github.com/Soniyanayak51" class="button">GitHub</a></li>
+      </ul>
+      <h4>Click <a href="images.html">here</a> to see some of my artwork!</h4>
+      <p>Click here to know a random fact about me:</p>
+      <button onclick="addRandomFact()">Fact</button>
+      <div id="fact-container"></div>
+      <h2>Work Experience</h2>
+      <h3>Software Enginnering Intern, Microsoft</h3>
+      <p>- Anomaly detection and flagging system for Microsoft Teams message search.</p>
+      <p>- Built an anomaly detection system that is based on real-time aggregation, computation and
+comparison of key metrics of real user queries with multiple simultaneous echo queries.</p>
+      <p>- Created an interactive dashboard using Power Bi for the users to analyze the behaviour across various
+workflows. (C#.NET, REST Apis, Power Bi, DAX)</p>
+      <h3>Software Enginnering Intern, Microsoft</h3>
+      <p>- Built the server end of an application which extracts intent from a user’s task in Microsoft To-Do to
+display relevant in-place quick actions in real time.</p>
+      <p>- Implemented 2 scenarios for the feature(file sharing and learning) using Azure NLP cognitive service
+LUIS and RESTful apis.</p>
+      <p>- Reduced the latency by 75% to render results from server to client and build a prototype for extension
+to emails. (C#, .NET, REST Apis, XML Schema, LUIS)</p>
+      <h2> My Projects</h2>
+      <h3>Online Review Summarizer with Feature Scoring</h3>
+      <p>Python implementation of a review summarizer that scrapes product reviews from Amazon to identify feature based
+scores, classify reviews and present a short summary. (NLP, tf-idf, Python)</p>
+      <p><a href="https://github.com/hackabit19/Bits-please">Link</a> to the project repo.</p>
+      <h3>Disaster Tweets Classifier</h3>
+      <p>Python implementation of a NLP model for Kaggle. Extensive EDA, data cleaning and feature selection for fine tuning
+followed by training using a LSTM model and pretrained GloVe embeddings for binary classification of disaster related
+tweets. (NLP, GloVe)</p>
+      <p><a href="https://github.com/Soniyanayak51/Disaster_tweets_kaggle">Link</a> to the project repo.</p>
+      <h3>Cervical Cancer Classifier</h3>
+      <p>Python implementation of a deep learning model that classifies 3 stages of cervical cancer using a CNN with the help
+of batch normalisation. (Keras, TensorFlow)</p>
+      <p><a href="https://github.com/Soniyanayak51/Cervical-Cancer-Detection">Link</a> to the project repo.</p>
     </div>
   </body>
 </html>
