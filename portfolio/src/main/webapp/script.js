@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Adds a random fact to the page.
  */
 function addRandomFact() {
   const facts =
@@ -26,3 +26,22 @@ function addRandomFact() {
   const factContainer = document.getElementById('fact-container');
   factContainer.innerText = fact;
 }
+
+function getJsonComments() {
+    fetch('/data').then(response => response.json()).then((comments) => {
+        const commentListElement = document.getElementById('my-details-container');
+        comments.forEach((comment) => {
+        commentListElement.appendChild(createTaskElement(comment));
+        })
+    });
+}
+
+function createTaskElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.className = 'comment';
+  const titleElement = document.createElement('span');
+  titleElement.innerText = comment.title;
+  commentElement.appendChild(titleElement);
+  return commentElement;
+}
+
